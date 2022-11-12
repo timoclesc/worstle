@@ -10,18 +10,10 @@ interface BoardProps {
 const Board: FunctionComponent<BoardProps> = ({ solution }) => {
   const game = useAppSelector((state) => state.game);
 
-  const rows = game.boardState.map((letters, rowIndex) => {
-    let evaluation: Evaluation[] | undefined;
-    if (letters.length && rowIndex < game.currentRowIndex) {
-      evaluation = Array.from(letters).map((letter, letterIndex) => {
-        if (solution.at(letterIndex) === letter) return "correct";
-        else if (solution.includes(letter)) return "present";
-        else return "absent";
-      });
-    }
-
-    return { letters, evaluation };
-  });
+  const rows = game.boardState.map((letters, rowIndex) => ({
+    letters,
+    evaluation: game.evaluations[rowIndex],
+  }));
 
   return (
     <div className="flex flex-col space-y-2">

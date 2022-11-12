@@ -1,6 +1,8 @@
-import type { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import Key from "./Key";
 import { IoBackspaceOutline } from "react-icons/io5";
+import { Evaluation } from "../../styles/evaluation";
+import { useAppSelector } from "../../state/hooks";
 
 const rows = [
   ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
@@ -19,6 +21,8 @@ const Keyboard: FunctionComponent<KeyboardProps> = ({
   onEnter,
   onBackspace,
 }) => {
+  const game = useAppSelector((state) => state.game);
+
   return (
     <div className="flex flex-col space-y-2 justify-center items-center pb-2 w-full px-4">
       {rows.map((row, idx) => (
@@ -36,12 +40,17 @@ const Keyboard: FunctionComponent<KeyboardProps> = ({
                   <IoBackspaceOutline size={24} />
                 </Key>
               );
-            else
+            else {
               return (
-                <Key key={letter} onClick={() => onLetter(letter)}>
+                <Key
+                  key={letter}
+                  onClick={() => onLetter(letter)}
+                  evaluation={game.letterStatus[letter]}
+                >
                   {letter}
                 </Key>
               );
+            }
           })}
         </div>
       ))}
