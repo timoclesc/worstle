@@ -53,7 +53,7 @@ export default function Home({
   return (
     <div
       className={`${
-        settings.darkMode ? "bg-black text-white" : "bg-white text-black"
+        settings.darkMode ? "bg-zinc-900 text-white" : "bg-white text-black"
       } w-screen h-screen`}
     >
       <Head>
