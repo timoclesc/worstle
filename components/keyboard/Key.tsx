@@ -1,42 +1,29 @@
-import type { FunctionComponent } from "react";
-import { IoBackspaceOutline } from "react-icons/io5";
-import useGameStore from "../../state/game";
-import useSettingsStore from "../../state/settings";
+import type { FunctionComponent, ReactNode } from "react";
+import { Evaluation, EvaluationColor } from "../../styles/evaluation";
 
 interface KeyProps {
-  letter: string;
-  guessed?: "incorrect" | "correct";
+  children?: ReactNode;
+  onClick: () => void;
+  large?: boolean;
+  evaluation?: Evaluation;
 }
 
-const Key: FunctionComponent<KeyProps> = ({ letter, guessed }) => {
-  const { darkMode } = useSettingsStore();
-  const { addToCurrentGuess, deleteFromCurrentGuess, currentGuess } =
-    useGameStore();
-  const large = letter === "enter" || letter === "bksp";
-  const width = large ? "w-14" : "w-7";
-  const textSize = letter === "enter" ? "text-sm" : "";
-
-  const calcLetter =
-    letter === "bksp" ? <IoBackspaceOutline size={24} /> : letter;
-
-  const handleClick = () => {
-    if (letter === "bksp") deleteFromCurrentGuess();
-    else if (letter === "enter") console.log(currentGuess);
-    else addToCurrentGuess(letter);
-  };
+const Key: FunctionComponent<KeyProps> = ({
+  children,
+  onClick,
+  large,
+  evaluation,
+}) => {
+  const width = large ? "w-16" : "w-11";
+  let bgColor = "bg-gray-500";
+  if (evaluation) bgColor = EvaluationColor[evaluation];
 
   return (
     <button
-      onClick={handleClick}
-      className={`${width} ${textSize} rounded-sm font-mono uppercase font-bold h-14 flex justify-center items-center ${
-        guessed
-          ? guessed === "correct"
-            ? "bg-green-500"
-            : "bg-gray-800"
-          : "bg-gray-500"
-      }`}
+      onClick={onClick}
+      className={`${width} ${bgColor} rounded-sm font-mono uppercase font-bold h-14 flex justify-center items-center`}
     >
-      {calcLetter}
+      {children}
     </button>
   );
 };
