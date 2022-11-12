@@ -25,7 +25,7 @@ const LetterRow: FunctionComponent<LetterRowProps> = ({
   }
 
   return (
-    <div className="flex space-x-2">
+    <div className="flex space-x-1">
       {letterArray.map((letter, index) => {
         let onFlipEnd: (() => void) | undefined;
         if (index === letterArray.length - 1)
