@@ -7,6 +7,7 @@ interface LetterContainerProps {
   evaluation?: Evaluation;
   flipDelay: number;
   onFlipEnd?: () => void;
+  darkMode?: boolean;
 }
 
 const LetterContainer: FunctionComponent<LetterContainerProps> = ({
@@ -14,10 +15,11 @@ const LetterContainer: FunctionComponent<LetterContainerProps> = ({
   evaluation,
   flipDelay,
   onFlipEnd,
+  darkMode,
 }) => {
-  const darkMode = true;
   const [bgColor, setBgColor] = useState("");
   const [border, setBorder] = useState("border-[1px]");
+  const [textColor, setTextColor] = useState("");
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -25,6 +27,7 @@ const LetterContainer: FunctionComponent<LetterContainerProps> = ({
       setTimeout(() => {
         setBgColor(EvaluationColor[evaluation]);
         setBorder("border-0");
+        setTextColor("text-white");
         if (onFlipEnd) onFlipEnd();
       }, flipDelay);
     }
@@ -36,7 +39,7 @@ const LetterContainer: FunctionComponent<LetterContainerProps> = ({
 
   return (
     <div
-      className={`w-16 h-16 border-gray-500 ${bgColor} ${border} font-bold text-2xl flex justify-center items-center uppercase transition-colors duration-200`}
+      className={`w-16 h-16 border-gray-500 ${bgColor} ${border} ${textColor} font-bold text-2xl flex justify-center items-center uppercase transition-colors duration-200`}
     >
       {letter}
     </div>

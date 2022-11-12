@@ -6,13 +6,14 @@ import Keyboard from "../components/keyboard/Keyboard";
 import seedrandom from "seedrandom";
 import answers from "../answers";
 import { useEffect } from "react";
-import { useAppDispatch } from "../state/hooks";
+import { useAppDispatch, useAppSelector } from "../state/hooks";
 import {
   addLetter,
   evaluateRow,
   removeLetter,
   setSolution,
 } from "../state/gameSlice";
+import { toggleDarkMode } from "../state/settingsSlice";
 
 export const getServerSideProps: GetServerSideProps<{
   solution: string;
@@ -31,6 +32,8 @@ export default function Home({
   solution,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const dispatch = useAppDispatch();
+  const settings = useAppSelector((state) => state.settings);
+
   useEffect(() => {
     dispatch(setSolution(solution));
   }, []);
@@ -47,12 +50,10 @@ export default function Home({
     dispatch(evaluateRow());
   };
 
-  const darkMode = true;
-
   return (
     <div
       className={`${
-        darkMode ? "bg-black text-white" : "bg-white text-black"
+        settings.darkMode ? "bg-black text-white" : "bg-white text-black"
       } w-screen h-screen`}
     >
       <Head>
@@ -63,7 +64,10 @@ export default function Home({
       <header className="w-full flex justify-center items-center border-b-gray-500 border-b-2">
         <div className="text-2xl font-bold">Wordle Clone</div>
         <div className="absolute right-0 pr-4 flex justify-center items-center">
-          <DarkModeButton onClick={() => null} darkMode={darkMode} />
+          <DarkModeButton
+            onClick={() => dispatch(toggleDarkMode())}
+            darkMode={settings.darkMode}
+          />
         </div>
       </header>
       <main className="flex flex-col items-center">
