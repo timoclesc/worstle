@@ -23,7 +23,7 @@ const initialState: GameState = {
 };
 
 export const gameSlice = createSlice({
-  name: "Game",
+  name: "game",
   initialState,
   reducers: {
     setSolution: (state, action: PayloadAction<string>) => {
