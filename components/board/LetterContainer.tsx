@@ -1,6 +1,6 @@
 import type { FunctionComponent } from "react";
 import { useState, useEffect } from "react";
-import { Evaluation, EvaluationColor } from "../../styles/evaluation";
+import { Evaluation, EvaluationColor } from "../../app/evaluation";
 
 interface LetterContainerProps {
   letter?: string;

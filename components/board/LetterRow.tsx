@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import { lastTileReveal } from "../../state/gameSlice";
 import { useAppDispatch } from "../../state/hooks";
-import { Evaluation } from "../../styles/evaluation";
+import { Evaluation } from "../../app/evaluation";
 import LetterContainer from "./LetterContainer";
 
 const maxLetters = 5;

@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { useAppSelector } from "../../state/hooks";
-import { Evaluation } from "../../styles/evaluation";
+import { Evaluation } from "../../app/evaluation";
 import LetterRow from "./LetterRow";
 
 interface BoardProps {
