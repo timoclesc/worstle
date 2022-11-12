@@ -17,29 +17,24 @@ const LetterContainer: FunctionComponent<LetterContainerProps> = ({
   onFlipEnd,
   darkMode,
 }) => {
-  const [bgColor, setBgColor] = useState("");
-  const [border, setBorder] = useState("border-[1px]");
-  const [textColor, setTextColor] = useState("");
+  let bgColor = "";
+  let border = "border-[1px]";
+  let textColor = "";
+  if (evaluation) {
+    bgColor = EvaluationColor[evaluation];
+    border = "border-0";
+    textColor = "text-white";
+  }
 
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    if (evaluation) {
-      setTimeout(() => {
-        setBgColor(EvaluationColor[evaluation]);
-        setBorder("border-0");
-        setTextColor("text-white");
-        if (onFlipEnd) onFlipEnd();
-      }, flipDelay);
-    }
-
-    return () => {
-      if (timeout) clearTimeout(timeout);
-    };
-  }, [evaluation]);
+  const onTransitionEnd = () => {
+    if (onFlipEnd) onFlipEnd();
+  };
 
   return (
     <div
-      className={`w-16 h-16 border-gray-500 ${bgColor} ${border} ${textColor} font-bold text-2xl flex justify-center items-center uppercase transition-colors duration-200`}
+      style={{ transitionDelay: `${flipDelay}ms` }}
+      className={`w-16 h-16 border-gray-500 ${bgColor} ${border} ${textColor} font-bold text-3xl flex justify-center items-center uppercase transition-colors duration-200`}
+      onTransitionEnd={onTransitionEnd}
     >
       {letter}
     </div>
