@@ -74,7 +74,6 @@ export default function Home({
         <div className="grow flex justify-center items-center">
           <Board solution={solution} />
         </div>
-        {solution}
         <Keyboard
           onLetter={handleLetter}
           onBackspace={handleBackspace}

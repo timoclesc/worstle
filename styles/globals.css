@@ -4,6 +4,7 @@
 
 :root {
   --header-height: 64px;
+  font-family: 'Clear Sans';
 }
 
 header {
