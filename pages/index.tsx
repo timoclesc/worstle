@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { FaGithub } from "react-icons/fa";
 import seedrandom from "seedrandom";
