@@ -4,6 +4,8 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import answers from "../app/answers";
 import { Evaluation } from "../app/evaluation";
 
+// TODO: Load and persist game state in localStorage
+
 const maxLetters = 5;
 
 interface GameState {

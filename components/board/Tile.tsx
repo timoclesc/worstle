@@ -1,6 +1,8 @@
 import type { FunctionComponent } from "react";
 import { Evaluation, EvaluationColor } from "../../app/evaluation";
 
+// TODO: Add flip animation
+
 interface TileProps {
   letter?: string;
   evaluation?: Evaluation;
