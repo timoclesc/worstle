@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import { lastTileReveal } from "../../state/gameSlice";
 import { useAppDispatch } from "../../state/hooks";
 import { Evaluation } from "../../app/evaluation";
-import LetterContainer from "./LetterContainer";
+import Tile from "./Tile";
 
 const maxLetters = 5;
 
@@ -33,7 +33,7 @@ const LetterRow: FunctionComponent<LetterRowProps> = ({
             dispatch(lastTileReveal());
           };
         return (
-          <LetterContainer
+          <Tile
             key={index}
             letter={letter}
             flipDelay={index * 300}

@@ -1,8 +1,7 @@
 import type { FunctionComponent } from "react";
-import { useState, useEffect } from "react";
 import { Evaluation, EvaluationColor } from "../../app/evaluation";
 
-interface LetterContainerProps {
+interface TileProps {
   letter?: string;
   evaluation?: Evaluation;
   flipDelay: number;
@@ -10,7 +9,7 @@ interface LetterContainerProps {
   darkMode?: boolean;
 }
 
-const LetterContainer: FunctionComponent<LetterContainerProps> = ({
+const Tile: FunctionComponent<TileProps> = ({
   letter,
   evaluation,
   flipDelay,
@@ -41,4 +40,4 @@ const LetterContainer: FunctionComponent<LetterContainerProps> = ({
   );
 };
 
-export default LetterContainer;
+export default Tile;
