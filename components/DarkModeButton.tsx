@@ -10,7 +10,7 @@ const DarkModeButton: FunctionComponent<DarkModeButtonProps> = ({
   darkMode,
   onClick,
 }) => {
-  const icon = darkMode ? <FaRegSun size={28} /> : <FaRegMoon size={28} />;
+  const icon = darkMode ? <FaRegSun size={24} /> : <FaRegMoon size={24} />;
   return <button onClick={onClick}>{icon}</button>;
 };
 
