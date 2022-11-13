@@ -1,21 +1,21 @@
+import { useEffect, useState } from "react";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
+import { FaGithub } from "react-icons/fa";
+import seedrandom from "seedrandom";
+import answers from "../answers";
 import Board from "../components/board/Board";
 import DarkModeButton from "../components/DarkModeButton";
 import Keyboard from "../components/keyboard/Keyboard";
-import seedrandom from "seedrandom";
-import answers from "../answers";
-import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../state/hooks";
+import Modal from "../components/Modal";
 import {
   addLetter,
   evaluateRow,
   removeLetter,
   setSolution,
 } from "../state/gameSlice";
+import { useAppDispatch, useAppSelector } from "../state/hooks";
 import { toggleDarkMode } from "../state/settingsSlice";
-import Modal from "../components/Modal";
-import { FaGithub } from "react-icons/fa";
 
 export const getServerSideProps: GetServerSideProps<{
   solution: string;

@@ -1,7 +1,7 @@
-import { FunctionComponent } from "react";
+import type { FunctionComponent } from "react";
+import { Evaluation } from "../../app/evaluation";
 import { lastTileReveal } from "../../state/gameSlice";
 import { useAppDispatch } from "../../state/hooks";
-import { Evaluation } from "../../app/evaluation";
 import Tile from "./Tile";
 
 const maxLetters = 5;

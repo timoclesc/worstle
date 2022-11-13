@@ -1,4 +1,5 @@
-import { Fragment, FunctionComponent, ReactNode } from "react";
+import { Fragment } from "react";
+import type { FunctionComponent, ReactNode } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useAppSelector } from "../state/hooks";
 

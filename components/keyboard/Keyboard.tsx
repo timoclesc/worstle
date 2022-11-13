@@ -1,7 +1,6 @@
-import { FunctionComponent, useState } from "react";
-import Key from "./Key";
+import type { FunctionComponent } from "react";
 import { IoBackspaceOutline } from "react-icons/io5";
-import { Evaluation } from "../../app/evaluation";
+import Key from "./Key";
 import { useAppSelector } from "../../state/hooks";
 
 const rows = [
