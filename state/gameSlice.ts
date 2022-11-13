@@ -74,7 +74,7 @@ export const gameSlice = createSlice({
     lastTileReveal: (state) => {
       const guess = state.boardState[state.currentRowIndex];
       if (guess === state.solution) state.status = "WIN";
-      else if (state.currentRowIndex === state.boardState.length)
+      else if (state.currentRowIndex === state.boardState.length - 1)
         state.status = "FAIL";
       else state.status = "IN_PROGRESS";
       state.currentRowIndex++;
