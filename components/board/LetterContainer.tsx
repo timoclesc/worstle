@@ -33,7 +33,7 @@ const LetterContainer: FunctionComponent<LetterContainerProps> = ({
   return (
     <div
       style={{ transitionDelay: `${flipDelay}ms` }}
-      className={`w-16 h-16 border-gray-500 ${bgColor} ${border} ${textColor} font-bold text-3xl flex justify-center items-center uppercase transition-colors duration-200`}
+      className={`w-16 h-16 border-gray-500 ${bgColor} ${border} ${textColor} font-bold text-3xl flex justify-center items-center uppercase transition-[background-color] duration-200`}
       onTransitionEnd={onTransitionEnd}
     >
       {letter}
