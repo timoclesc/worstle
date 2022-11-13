@@ -15,6 +15,7 @@ import {
 } from "../state/gameSlice";
 import { toggleDarkMode } from "../state/settingsSlice";
 import Modal from "../components/Modal";
+import { FaGithub } from "react-icons/fa";
 
 export const getServerSideProps: GetServerSideProps<{
   solution: string;
@@ -71,6 +72,11 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="w-full flex justify-center items-center border-b-gray-500 border-b-2">
+        <div className="absolute left-0 pl-4 flex justify-center items-center">
+          <a href="https://github.com/troykollar/nextjs-wordle-clone">
+            <FaGithub size={24} />
+          </a>
+        </div>
         <div className="text-2xl font-bold">Wordle Clone</div>
         <div className="absolute right-0 pr-4 flex justify-center items-center">
           <DarkModeButton
