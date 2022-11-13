@@ -1,7 +1,6 @@
 import { FunctionComponent } from "react";
 import { useAppSelector } from "../../state/hooks";
-import { Evaluation } from "../../app/evaluation";
-import LetterRow from "./LetterRow";
+import Row from "./Row";
 
 interface BoardProps {
   solution: string;
@@ -18,7 +17,7 @@ const Board: FunctionComponent<BoardProps> = ({ solution }) => {
   return (
     <div className="flex flex-col space-y-1">
       {rows.map(({ letters, evaluation }, index) => (
-        <LetterRow key={index} letters={letters} evaluation={evaluation} />
+        <Row key={index} letters={letters} evaluation={evaluation} />
       ))}
     </div>
   );

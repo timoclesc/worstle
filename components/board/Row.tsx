@@ -6,15 +6,12 @@ import Tile from "./Tile";
 
 const maxLetters = 5;
 
-interface LetterRowProps {
+interface RowProps {
   letters: string;
   evaluation?: Evaluation[];
 }
 
-const LetterRow: FunctionComponent<LetterRowProps> = ({
-  letters,
-  evaluation,
-}) => {
+const Row: FunctionComponent<RowProps> = ({ letters, evaluation }) => {
   const dispatch = useAppDispatch();
   let letterArray = Array.from(letters);
   const letterCount = letterArray.length;
@@ -46,4 +43,4 @@ const LetterRow: FunctionComponent<LetterRowProps> = ({
   );
 };
 
-export default LetterRow;
+export default Row;
