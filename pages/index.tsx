@@ -5,7 +5,7 @@ import DarkModeButton from "../components/DarkModeButton";
 import Keyboard from "../components/keyboard/Keyboard";
 import seedrandom from "seedrandom";
 import answers from "../answers";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../state/hooks";
 import {
   addLetter,
@@ -14,6 +14,7 @@ import {
   setSolution,
 } from "../state/gameSlice";
 import { toggleDarkMode } from "../state/settingsSlice";
+import Modal from "../components/Modal";
 
 export const getServerSideProps: GetServerSideProps<{
   solution: string;
@@ -31,12 +32,20 @@ export const getServerSideProps: GetServerSideProps<{
 export default function Home({
   solution,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const [winModal, setWinModal] = useState(false);
+  const [failModal, setFailModal] = useState(false);
   const dispatch = useAppDispatch();
   const settings = useAppSelector((state) => state.settings);
+  const status = useAppSelector((state) => state.game.status);
 
   useEffect(() => {
     dispatch(setSolution(solution));
   }, []);
+
+  useEffect(() => {
+    if (status === "WIN") setWinModal(true);
+    else if (status === "FAIL") setFailModal(true);
+  }, [status]);
 
   const handleLetter = (letter: string) => {
     dispatch(addLetter(letter));
@@ -74,6 +83,21 @@ export default function Home({
         <div className="grow flex justify-center items-center">
           <Board solution={solution} />
         </div>
+        <Modal
+          open={winModal}
+          onClose={() => setWinModal(false)}
+          title="Winner!"
+        >
+          Congrats! You won!
+        </Modal>
+        <Modal
+          open={failModal}
+          onClose={() => setFailModal(false)}
+          title="Better luck next time!"
+        >
+          The word was <b className="uppercase">{solution}</b>. Better luck next
+          time!
+        </Modal>
         <Keyboard
           onLetter={handleLetter}
           onBackspace={handleBackspace}
