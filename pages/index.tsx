@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Head from "next/head";
 import { FaGithub } from "react-icons/fa";
+import { Toaster } from "react-hot-toast";
 import seedrandom from "seedrandom";
 import answers from "../app/answers";
 import Board from "../components/board/Board";
@@ -86,6 +87,7 @@ export default function Home({
         </div>
       </header>
       <main className="flex flex-col items-center">
+        <Toaster />
         <div className="grow flex justify-center items-center">
           <Board solution={solution} />
         </div>

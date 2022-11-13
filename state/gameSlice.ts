@@ -1,5 +1,7 @@
+import toast from "react-hot-toast";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import answers from "../app/answers";
 import { Evaluation } from "../app/evaluation";
 
 const maxLetters = 5;
@@ -45,15 +47,16 @@ export const gameSlice = createSlice({
       ].slice(0, -1);
     },
     evaluateRow: (state) => {
-      if (
-        state.boardState[state.currentRowIndex].length < 5 ||
-        state.status !== "IN_PROGRESS"
-      )
+      const guess = state.boardState[state.currentRowIndex];
+      if (guess.length < 5 || state.status !== "IN_PROGRESS") return;
+
+      if (!answers.includes(guess) && typeof window !== "undefined") {
+        toast("Not in word list");
         return;
+      }
 
       state.status = "EVALUATE_IN_PROGRESS";
 
-      const guess = state.boardState[state.currentRowIndex];
       state.evaluations.push(
         Array.from(guess).map((guessedLetter, guessedLetterIndex) => {
           if (state.solution.at(guessedLetterIndex) === guessedLetter) {
