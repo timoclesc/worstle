@@ -42,7 +42,7 @@ export default function Home({
 
   useEffect(() => {
     dispatch(setSolution(solution));
-  }, []);
+  }, [dispatch, solution]);
 
   useEffect(() => {
     if (status === "WIN") setWinModal(true);
