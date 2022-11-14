@@ -1,14 +1,11 @@
 import type { FunctionComponent } from "react";
 import { Evaluation, EvaluationColor } from "../../app/evaluation";
 
-// TODO: Add flip animation
-
 interface TileProps {
   letter?: string;
   evaluation?: Evaluation;
   flipDelay: number;
   onFlipEnd?: () => void;
-  darkMode?: boolean;
 }
 
 const Tile: FunctionComponent<TileProps> = ({
@@ -16,14 +13,11 @@ const Tile: FunctionComponent<TileProps> = ({
   evaluation,
   flipDelay,
   onFlipEnd,
-  darkMode,
 }) => {
   let bgColor = "";
-  let border = "border-[1px]";
   let textColor = "";
   if (evaluation) {
     bgColor = EvaluationColor[evaluation];
-    border = "border-0";
     textColor = "text-white";
   }
 
@@ -33,8 +27,13 @@ const Tile: FunctionComponent<TileProps> = ({
 
   return (
     <div
-      style={{ transitionDelay: `${flipDelay}ms` }}
-      className={`w-16 h-16 border-gray-500 ${bgColor} ${border} ${textColor} font-bold text-3xl flex justify-center items-center uppercase transition-[background-color] duration-200`}
+      style={{
+        transitionDelay: `${flipDelay}ms`,
+        animationDelay: `${flipDelay}ms`,
+      }}
+      className={`w-16 h-16 border-gray-500 border-[1px] ${bgColor} ${textColor} ${
+        evaluation && "flip"
+      } font-bold text-3xl flex justify-center items-center uppercase transition-[background-color] duration-200`}
       onTransitionEnd={onTransitionEnd}
     >
       {letter}

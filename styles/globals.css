@@ -14,3 +14,20 @@ header {
 main {
   height: calc(100% - var(--header-height));
 }
+
+@keyframes flip {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1, 0);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+.flip {
+  animation: flip;
+  animation-duration: 500ms;
+}
