@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { colors, setColorPallete } from "../app/colors";
 
 interface SettingsState {
   darkMode: boolean;
@@ -13,6 +14,8 @@ export const settingsSlice = createSlice({
   initialState,
   reducers: {
     toggleDarkMode: (state) => {
+      if (state.darkMode) setColorPallete(colors.light);
+      else setColorPallete(colors.dark);
       state.darkMode = !state.darkMode;
     },
   },

@@ -31,7 +31,7 @@ const Tile: FunctionComponent<TileProps> = ({
         transitionDelay: `${flipDelay}ms`,
         animationDelay: `${flipDelay}ms`,
       }}
-      className={`w-16 h-16 border-gray-500 border-[1px] ${bgColor} ${textColor} ${
+      className={`w-14 h-14 md:w-16 md:h-16 border-gray-500 border-[1px] ${bgColor} ${textColor} ${
         evaluation && "flip"
       } font-bold text-3xl flex justify-center items-center uppercase transition-[background-color] duration-200`}
       onTransitionEnd={onTransitionEnd}

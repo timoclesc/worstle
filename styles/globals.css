@@ -3,16 +3,27 @@
 @tailwind utilities;
 
 :root {
+  --app-height: 100vh;
+  --app-bg-color: #18181b;
+  --app-text-color: white;
   --header-height: 64px;
   font-family: 'Clear Sans';
 }
 
-header {
-  height: var(--header-height);
+html, body {
+  height: var(--app-height);
+  background-color: var(--app-bg-color);
+  color: var(--app-text-color);
+}
+
+#__next {
+  height: var(--app-height)
 }
 
 main {
   height: calc(100% - var(--header-height));
+  height: -webkit-calc(100% - var(--header-height));
+  height: -moz-calc(100% - var(--header-height));
 }
 
 @keyframes flip {
