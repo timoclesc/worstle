@@ -12,7 +12,6 @@
 
 html, body {
   height: var(--app-height);
-  background-color: var(--app-bg-color);
   color: var(--app-text-color);
 }
 

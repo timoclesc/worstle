@@ -14,9 +14,9 @@ export const settingsSlice = createSlice({
   initialState,
   reducers: {
     toggleDarkMode: (state) => {
-      if (state.darkMode) setColorPallete(colors.light);
-      else setColorPallete(colors.dark);
-      state.darkMode = !state.darkMode;
+      if (document.documentElement.classList.contains("dark"))
+        document.documentElement.classList.remove("dark");
+      else document.documentElement.classList.add("dark");
     },
   },
 });

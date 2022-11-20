@@ -14,12 +14,27 @@ const Tile: FunctionComponent<TileProps> = ({
   flipDelay,
   onFlipEnd,
 }) => {
-  let bgColor = "";
-  let textColor = "";
-  if (evaluation) {
-    bgColor = EvaluationColor[evaluation];
-    textColor = "text-white";
+  let bgColor: string;
+  switch (evaluation) {
+    case "absent":
+      bgColor = "bg-light-eval-absent dark:bg-dark-eval-absent";
+      break;
+    case "present":
+      bgColor = "bg-light-eval-present dark:bg-dark-eval-present";
+      break;
+    case "correct":
+      bgColor = "bg-light-eval-correct dark:bg-dark-eval-correct";
+      break;
+    default:
+      bgColor = "";
   }
+
+  let borderColor = "";
+  if (evaluation) borderColor = "border-transparent";
+  else if (letter) borderColor = "border-[#878A8C] dark:border-[#565758]";
+  else borderColor = "border-light-gray dark:border-dark-gray";
+
+  const textColor = evaluation ? "text-white" : "text-black dark:text-white";
 
   const onTransitionEnd = () => {
     if (onFlipEnd) onFlipEnd();
@@ -31,7 +46,7 @@ const Tile: FunctionComponent<TileProps> = ({
         transitionDelay: `${flipDelay}ms`,
         animationDelay: `${flipDelay}ms`,
       }}
-      className={`w-14 h-14 md:w-16 md:h-16 border-gray-500 border-[1px] ${bgColor} ${textColor} ${
+      className={`w-14 h-14 md:w-16 md:h-16 ${borderColor} border-2 ${bgColor} ${textColor} ${
         evaluation && "flip"
       } font-bold text-3xl flex justify-center items-center uppercase transition-[background-color] duration-200`}
       onTransitionEnd={onTransitionEnd}
