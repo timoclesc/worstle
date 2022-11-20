@@ -15,7 +15,7 @@ const Board: FunctionComponent<BoardProps> = ({ solution }) => {
   }));
 
   return (
-    <div className="h-full flex flex-col justify-center space-y-1">
+    <div className="w-[350px] h-[420px] p-[10px] flex flex-col space-y-1">
       {rows.map(({ letters, evaluation }, index) => (
         <Row key={index} letters={letters} evaluation={evaluation} />
       ))}

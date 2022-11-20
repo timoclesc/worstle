@@ -22,7 +22,7 @@ const Row: FunctionComponent<RowProps> = ({ letters, evaluation }) => {
   }
 
   return (
-    <div className="flex space-x-1">
+    <div className="flex space-x-[5px]">
       {letterArray.map((letter, index) => {
         let onFlipEnd: (() => void) | undefined;
         if (index === letterArray.length - 1)

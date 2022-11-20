@@ -86,7 +86,7 @@ export default function Home({
       </header>
       <main className="grow flex flex-col items-center">
         <Toaster />
-        <div className="grow py-8 flex justify-center items-center">
+        <div className="grow flex justify-center items-center">
           <Board solution={solution} />
         </div>
         <Modal
