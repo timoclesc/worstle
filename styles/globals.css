@@ -7,16 +7,17 @@
   --app-bg-color: #18181b;
   --app-text-color: white;
   --header-height: 64px;
-  font-family: "Helvetica Neue",Arial,sans-serif;
+  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
-html, body {
+html,
+body {
   height: var(--app-height);
   color: var(--app-text-color);
 }
 
 #__next {
-  height: var(--app-height)
+  height: var(--app-height);
 }
 
 main {
@@ -62,7 +63,8 @@ main {
   transform: rotateX(180deg);
 }
 
-.tile-front, .tile-back {
+.tile-front,
+.tile-back {
   position: absolute;
   width: 100%;
   height: 100%;

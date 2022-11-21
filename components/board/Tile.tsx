@@ -53,17 +53,17 @@ const Tile: FunctionComponent<TileProps> = ({
   return (
     <>
       <div
-        className={`tile ${evalClass} uppercase text-[32px] font-bold`}
+        className={`tile ${evalClass} text-[32px] font-bold uppercase`}
         onTransitionEnd={onAnimationEnd}
       >
         <div className="tile-inner">
           <div
-            className={`tile-front flex items-center justify-center w-[58px] h-[58px] border-2 ${borderColor} text-black dark:text-white`}
+            className={`tile-front flex h-[58px] w-[58px] items-center justify-center border-2 ${borderColor} text-black dark:text-white`}
           >
             {letter}
           </div>
           <div
-            className={`tile-back flex items-center justify-center w-[62px] h-[62px] ${bgColor} text-white`}
+            className={`tile-back flex h-[62px] w-[62px] items-center justify-center ${bgColor} text-white`}
             onAnimationEnd={onAnimationEnd}
           >
             {letter}

@@ -33,7 +33,7 @@ const Key: FunctionComponent<KeyProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`${width} ${bgColor} ${textColor} fill-current rounded text-[13.333px] font-bold select-none uppercase h-14 flex justify-center items-center`}
+      className={`${width} ${bgColor} ${textColor} flex h-14 select-none items-center justify-center rounded fill-current text-[13.333px] font-bold uppercase`}
     >
       {children}
     </button>

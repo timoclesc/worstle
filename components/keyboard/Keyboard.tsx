@@ -35,11 +35,11 @@ const Keyboard: FunctionComponent<KeyboardProps> = ({
   }, [game.status]);
 
   return (
-    <div className="flex flex-col justify-center items-center w-full px-2">
+    <div className="flex w-full flex-col items-center justify-center px-2">
       {rows.map((row, idx) => (
         <div
           key={idx}
-          className="flex pb-2 space-x-[6px] w-full justify-center"
+          className="flex w-full justify-center space-x-[6px] pb-2"
         >
           {Array.from(row).map((letter, letterIdx) => {
             if (letter === "enter")
