@@ -1,5 +1,5 @@
 import type { FunctionComponent, ReactNode } from "react";
-import { Evaluation, EvaluationColor } from "../../app/evaluation";
+import { Evaluation } from "../../types";
 
 interface KeyProps {
   children?: ReactNode;

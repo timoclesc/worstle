@@ -1,6 +1,5 @@
 import type { FunctionComponent } from "react";
 import { useState, useEffect } from "react";
-import { IoBackspaceOutline } from "react-icons/io5";
 import Key from "./Key";
 import { useAppSelector } from "../../state/hooks";
 

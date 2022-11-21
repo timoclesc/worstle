@@ -4,7 +4,7 @@ import Head from "next/head";
 import { FaGithub } from "react-icons/fa";
 import { Toaster } from "react-hot-toast";
 import seedrandom from "seedrandom";
-import answers from "../app/answers";
+import answers from "../answers";
 import Board from "../components/board/Board";
 import DarkModeButton from "../components/DarkModeButton";
 import Keyboard from "../components/keyboard/Keyboard";

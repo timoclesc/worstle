@@ -1,5 +1,5 @@
 import type { FunctionComponent } from "react";
-import { Evaluation } from "../../app/evaluation";
+import type { Evaluation } from "../../types";
 import { lastTileReveal } from "../../state/gameSlice";
 import { useAppDispatch } from "../../state/hooks";
 import Tile from "./Tile";

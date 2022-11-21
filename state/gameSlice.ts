@@ -1,8 +1,8 @@
 import toast from "react-hot-toast";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import answers from "../app/answers";
-import { Evaluation } from "../app/evaluation";
+import answers from "../answers";
+import type { Evaluation } from "../types";
 
 // TODO: Load and persist game state in localStorage
 

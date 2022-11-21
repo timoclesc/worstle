@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { colors, setColorPallete } from "../app/colors";
 
 interface SettingsState {
   darkMode: boolean;
