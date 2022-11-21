@@ -7,7 +7,7 @@
   --app-bg-color: #18181b;
   --app-text-color: white;
   --header-height: 64px;
-  font-family: 'Clear Sans';
+  font-family: "Helvetica Neue",Arial,sans-serif;
 }
 
 html, body {

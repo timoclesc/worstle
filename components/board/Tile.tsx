@@ -48,7 +48,7 @@ const Tile: FunctionComponent<TileProps> = ({
       }}
       className={`w-[62px] h-[62.5px] md:w-16 md:h-16 ${borderColor} border-2 ${bgColor} ${textColor} ${
         evaluation && "flip"
-      } font-bold text-3xl flex justify-center items-center uppercase transition-[background-color] duration-200`}
+      } font-bold text-[32px] select-none leading-8 flex justify-center items-center uppercase transition-[background-color] duration-200`}
       onTransitionEnd={onTransitionEnd}
     >
       {letter}
