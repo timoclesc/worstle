@@ -1,4 +1,5 @@
 import type { FunctionComponent } from "react";
+import { useState, useEffect } from "react";
 import { IoBackspaceOutline } from "react-icons/io5";
 import Key from "./Key";
 import { useAppSelector } from "../../state/hooks";
@@ -21,6 +22,18 @@ const Keyboard: FunctionComponent<KeyboardProps> = ({
   onBackspace,
 }) => {
   const game = useAppSelector((state) => state.game);
+  const [isAnimating, setIsAnimating] = useState(
+    game.status === "EVALUATE_IN_PROGRESS"
+  );
+  const [letterStatus, setLetterStatus] = useState(game.letterStatus);
+
+  useEffect(() => {
+    setIsAnimating((prevIsAnimating) => {
+      if (game.status !== "EVALUATE_IN_PROGRESS" && prevIsAnimating)
+        setLetterStatus(game.letterStatus);
+      return game.status === "EVALUATE_IN_PROGRESS";
+    });
+  }, [game.status]);
 
   return (
     <div className="flex flex-col justify-center items-center w-full px-2">
@@ -57,7 +70,7 @@ const Keyboard: FunctionComponent<KeyboardProps> = ({
                 <Key
                   key={letterIdx}
                   onClick={() => onLetter(letter)}
-                  evaluation={game.letterStatus[letter]}
+                  evaluation={letterStatus[letter]}
                 >
                   {letter}
                 </Key>
