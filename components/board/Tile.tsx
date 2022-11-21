@@ -1,5 +1,5 @@
-import type { FunctionComponent } from "react";
-import { Evaluation, EvaluationColor } from "../../app/evaluation";
+import { FunctionComponent, useEffect, useState } from "react";
+import { Evaluation } from "../../app/evaluation";
 
 interface TileProps {
   letter?: string;
@@ -29,30 +29,48 @@ const Tile: FunctionComponent<TileProps> = ({
       bgColor = "";
   }
 
-  let borderColor = "";
-  if (evaluation) borderColor = "border-transparent";
-  else if (letter) borderColor = "border-[#878A8C] dark:border-[#565758]";
-  else borderColor = "border-light-gray dark:border-dark-gray";
+  let borderColor = "border-light-gray dark:border-dark-gray";
+  if (letter) borderColor = "border-[#878A8C] dark:border-[#565758]";
 
-  const textColor = evaluation ? "text-white" : "text-black dark:text-white";
-
-  const onTransitionEnd = () => {
+  const onAnimationEnd = () => {
     if (onFlipEnd) onFlipEnd();
   };
 
+  const [evalClass, setEvalClass] = useState("not-evaluated");
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    if (evaluation) {
+      timeout = setTimeout(() => {
+        setEvalClass("evaluated");
+      }, flipDelay);
+    }
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+    };
+  }, [evaluation]);
+
   return (
-    <div
-      style={{
-        transitionDelay: `${flipDelay}ms`,
-        animationDelay: `${flipDelay}ms`,
-      }}
-      className={`w-[62px] h-[62.5px] md:w-16 md:h-16 ${borderColor} border-2 ${bgColor} ${textColor} ${
-        evaluation && "flip"
-      } font-bold text-[32px] select-none leading-8 flex justify-center items-center uppercase transition-[background-color] duration-200`}
-      onTransitionEnd={onTransitionEnd}
-    >
-      {letter}
-    </div>
+    <>
+      <div
+        className={`tile ${evalClass} uppercase text-[32px] font-bold`}
+        onTransitionEnd={onAnimationEnd}
+      >
+        <div className="tile-inner">
+          <div
+            className={`tile-front flex items-center justify-center w-[58px] h-[58px] border-2 ${borderColor} text-black dark:text-white`}
+          >
+            {letter}
+          </div>
+          <div
+            className={`tile-back flex items-center justify-center w-[62px] h-[62px] ${bgColor} text-white`}
+            onAnimationEnd={onAnimationEnd}
+          >
+            {letter}
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

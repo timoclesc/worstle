@@ -41,3 +41,35 @@ main {
   animation: flip;
   animation-duration: 500ms;
 }
+
+.tile {
+  background-color: transparent;
+  width: 62px;
+  height: 62px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.tile-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.tile.evaluated .tile-inner {
+  transform: rotateX(180deg);
+}
+
+.tile-front, .tile-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.tile-back {
+  transform: rotateX(180deg);
+}
