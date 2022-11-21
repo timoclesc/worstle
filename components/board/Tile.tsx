@@ -1,5 +1,6 @@
-import { FunctionComponent, useEffect, useState } from "react";
-import { Evaluation } from "../../types";
+import type { FunctionComponent } from "react";
+import { useEffect, useState } from "react";
+import type { Evaluation } from "../../types";
 
 interface TileProps {
   letter?: string;
