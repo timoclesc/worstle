@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { colors, setColorPallete } from "../app/colors";
 
 interface SettingsState {
@@ -13,13 +13,23 @@ export const settingsSlice = createSlice({
   name: "settings",
   initialState,
   reducers: {
-    toggleDarkMode: (state) => {
-      if (document.documentElement.classList.contains("dark"))
+    setDarkMode: (state, action: PayloadAction<boolean>) => {
+      if (
+        action.payload &&
+        !document.documentElement.classList.contains("dark")
+      ) {
+        document.documentElement.classList.add("dark");
+        state.darkMode = true;
+      } else if (
+        !action.payload &&
+        document.documentElement.classList.contains("dark")
+      ) {
+        state.darkMode = false;
         document.documentElement.classList.remove("dark");
-      else document.documentElement.classList.add("dark");
+      }
     },
   },
 });
 
-export const { toggleDarkMode } = settingsSlice.actions;
+export const { setDarkMode } = settingsSlice.actions;
 export default settingsSlice.reducer;

@@ -16,7 +16,7 @@ import {
   setSolution,
 } from "../state/gameSlice";
 import { useAppDispatch, useAppSelector } from "../state/hooks";
-import { toggleDarkMode } from "../state/settingsSlice";
+import { setDarkMode } from "../state/settingsSlice";
 
 export const getServerSideProps: GetServerSideProps<{
   solution: string;
@@ -49,6 +49,15 @@ export default function Home({
     else if (status === "FAIL") setFailModal(true);
   }, [status]);
 
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    )
+      dispatch(setDarkMode(true));
+  }, []);
+
   const handleLetter = (letter: string) => {
     dispatch(addLetter(letter));
   };
@@ -77,7 +86,7 @@ export default function Home({
         <div className="text-2xl font-bold">Wordle Clone</div>
         <div className="absolute right-0 pr-4 flex justify-center items-center">
           <DarkModeButton
-            onClick={() => dispatch(toggleDarkMode())}
+            onClick={() => dispatch(setDarkMode(!settings.darkMode))}
             darkMode={settings.darkMode}
           />
         </div>
