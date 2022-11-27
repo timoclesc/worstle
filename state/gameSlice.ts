@@ -1,23 +1,15 @@
 import toast from "react-hot-toast";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { z } from "zod";
 import answers from "../answers";
-import type { Evaluation } from "../types";
+import type { Evaluation, gameState } from "../types";
 
 // TODO: Load and persist game state in localStorage
 
 const maxLetters = 5;
 
-interface GameState {
-  solution: string;
-  boardState: string[];
-  evaluations: Evaluation[][];
-  letterStatus: { [letter: string]: Evaluation };
-  currentRowIndex: number;
-  status: "IN_PROGRESS" | "FAIL" | "WIN" | "EVALUATE_IN_PROGRESS";
-}
-
-const initialState: GameState = {
+const initialState: z.infer<typeof gameState> = {
   solution: "",
   boardState: ["", "", "", "", "", ""],
   evaluations: [],
