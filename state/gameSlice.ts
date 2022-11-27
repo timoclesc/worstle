@@ -3,13 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { z } from "zod";
 import answers from "../answers";
-import type { Evaluation, gameState } from "../types";
+import { gameState } from "../types";
 
 // TODO: Load and persist game state in localStorage
 
 const maxLetters = 5;
 
-const initialState: z.infer<typeof gameState> = {
+let initialState: z.infer<typeof gameState> = {
   solution: "",
   boardState: ["", "", "", "", "", ""],
   evaluations: [],
@@ -22,6 +22,9 @@ export const gameSlice = createSlice({
   name: "game",
   initialState,
   reducers: {
+    setState: (state, action: PayloadAction<z.infer<typeof gameState>>) => {
+      return action.payload;
+    },
     setSolution: (state, action: PayloadAction<string>) => {
       state.solution = action.payload;
     },
@@ -67,19 +70,20 @@ export const gameSlice = createSlice({
           }
         })
       );
+      state.currentRowIndex++;
     },
     lastTileReveal: (state) => {
-      const guess = state.boardState[state.currentRowIndex];
+      const guess = state.boardState[state.currentRowIndex - 1];
       if (guess === state.solution) state.status = "WIN";
-      else if (state.currentRowIndex === state.boardState.length - 1)
+      else if (state.currentRowIndex === state.boardState.length)
         state.status = "FAIL";
       else state.status = "IN_PROGRESS";
-      state.currentRowIndex++;
     },
   },
 });
 
 export const {
+  setState,
   setSolution,
   addLetter,
   removeLetter,
