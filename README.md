@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Wordle Clone
 
-## Getting Started
+## Table of Contents
 
-First, run the development server:
+- [Overview](#overview)
+- [Built With](#built-with)
+- [Features](#features)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### [Live Demo](https://nextjs-wordle-clone.vercel.app/)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<img src="./screenshot.png?raw=true" alt="Next.js Wordle Clone Screenshot" width="400">
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+A clone of the popular game "Wordle".
+I built this because it seemed like a fun project to take on that could be completed in a relatively short amount of time, not to mention I love playing the Wordle every day!
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Something I wanted to commit to on this was really using TailwindCSS for the entire project. I had played around with it in the past, but had never worked enough with it on a project to really get a deep understanding of it. Using Tailwind on this project was a fun experience, and allowed me to hit those little "hurdles" that you need to overcome before really getting good at using a tool.
 
-## Learn More
+This was a really fun project and I definitely encourage it for anyone that's looking for something fun and simple to work on. The official "Wordle" game uses React, Redux, and localStorage to persist state locally, so it's really easy to reverse engineer and see exactly how it's built just by using your browser's devtools!
 
-To learn more about Next.js, take a look at the following resources:
+### Built With
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Next.js](https://nextjs.org/)
+- [TailwindCSS](https://tailwindcss.com/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
+- [LinkedIn](https://www.linkedin.com/in/troy-kollar)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Acknowledgements
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+A big inspiration for building this was [James Q Quick](https://www.youtube.com/@JamesQQuick) speaking about his experience building a Wordle clone in [SvelteKit](https://kit.svelte.dev/) this on he and [Amy Dutton's](https://selfteach.me/) podcast, [Compressed FM](https://www.compressed.fm/).
