@@ -20,19 +20,7 @@ const Keyboard: FunctionComponent<KeyboardProps> = ({
   onEnter,
   onBackspace,
 }) => {
-  const game = useAppSelector((state) => state.game);
-  const [isAnimating, setIsAnimating] = useState(
-    game.status === "EVALUATE_IN_PROGRESS"
-  );
-  const [letterStatus, setLetterStatus] = useState(game.letterStatus);
-
-  useEffect(() => {
-    setIsAnimating((prevIsAnimating) => {
-      if (game.status !== "EVALUATE_IN_PROGRESS" && prevIsAnimating)
-        setLetterStatus(game.letterStatus);
-      return game.status === "EVALUATE_IN_PROGRESS";
-    });
-  }, [game.status]);
+  const letterStatus = useAppSelector((state) => state.game.letterStatus);
 
   return (
     <div className="flex w-full flex-col items-center justify-center px-2">
