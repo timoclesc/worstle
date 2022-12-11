@@ -4,7 +4,6 @@
 
 - [Overview](#overview)
 - [Built With](#built-with)
-- [Features](#features)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
 
@@ -21,7 +20,7 @@ Something I wanted to commit to on this was really using TailwindCSS for the ent
 
 This was a really fun project and I definitely encourage it for anyone that's looking for something fun and simple to work on. The official "Wordle" game uses React, Redux, and localStorage to persist state locally, so it's really easy to reverse engineer and see exactly how it's built just by using your browser's devtools!
 
-### Built With
+## Built With
 
 - [React](https://reactjs.org/)
 - [Redux](https://redux.js.org/)
