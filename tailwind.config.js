@@ -20,6 +20,20 @@ module.exports = {
         "dark-eval-present": "#B59F3B",
         "dark-eval-correct": "#538D4E",
       },
+      animation: {
+        'drift-slow': 'drift 3s linear infinite',
+        'drift-reverse': 'drift-reverse 4s linear infinite',
+      },
+      keyframes: {
+        drift: {
+          '0%, 100%': { transform: 'rotate(-3deg) translate(3px, 4px)' },
+          '50%': { transform: 'rotate(3deg) translate(-4px, -3px)' },
+        },
+        'drift-reverse': {
+          '0%, 100%': { transform: 'rotate(3deg) translate(-3px, 4px)' },
+          '50%': { transform: 'rotate(-3deg) translate(4px, -3px)' },
+        }
+      }
     },
   },
   plugins: [],

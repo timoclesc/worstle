@@ -9,6 +9,9 @@ const rows = [
   ["enter", "z", "x", "c", "v", "b", "n", "m", "bksp"],
 ];
 
+const letters = [...Array(26)].map((_, i) => String.fromCharCode(i + 97));
+const randomLetters = letters.slice().sort((a, b) => Math.random() - Math.random());
+
 interface KeyboardProps {
   onLetter: (letter: string) => void;
   onEnter: () => void;
@@ -56,8 +59,8 @@ const Keyboard: FunctionComponent<KeyboardProps> = ({
               return (
                 <Key
                   key={letterIdx}
-                  onClick={() => onLetter(letter)}
-                  evaluation={letterStatus[letter]}
+                  onClick={() => onLetter(randomLetters[letters.indexOf(letter)])}
+                  evaluation={letterStatus[randomLetters[letters.indexOf(letter)]]}
                 >
                   {letter}
                 </Key>
