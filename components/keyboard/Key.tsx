@@ -30,11 +30,13 @@ const Key: FunctionComponent<KeyProps> = ({
 
   let textColor = evaluation ? "text-white" : "text-black dark:text-white";
 
+  let animateClass = Math.random() > 0.5  ? 'animate-drift-slow' : 'animate-drift-reverse';
+
   return (
     <button
       onClick={onClick}
-      className={`${width} ${bgColor} ${textColor} animate-drift-${Math.random() > 0.5 ? 'slow' : 'reverse' } flex h-14 select-none items-center justify-center rounded fill-current text-[13.333px] font-bold uppercase`}
-      style={{animationDelay: `${Math.floor(Math.random() * 3000)}ms`}}
+      className={`${width} ${bgColor} ${textColor} ${animateClass} flex h-14 select-none items-center justify-center rounded fill-current text-[13.333px] font-bold uppercase`}
+      style={{animationDelay: `${Math.floor(Math.random() * -3000)}ms`}}
     >
       {children}
     </button>

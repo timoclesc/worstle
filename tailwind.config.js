@@ -25,7 +25,7 @@ module.exports = {
         'drift-reverse': 'drift-reverse 4s linear infinite',
       },
       keyframes: {
-        drift: {
+        'drift': {
           '0%, 100%': { transform: 'rotate(-3deg) translate(3px, 4px)' },
           '50%': { transform: 'rotate(3deg) translate(-4px, -3px)' },
         },
